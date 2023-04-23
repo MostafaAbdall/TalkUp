@@ -23,7 +23,8 @@ class _ExpandableContainerState extends State<ExpandableContainer> {
       },
       child: AnimatedContainer(
         duration: Duration(milliseconds: 500),
-        height: _isExpanded ? 200 : 100, // Change the height based on whether it's expanded or not
+        height: _isExpanded ? 200 : 100,
+        // Change the height based on whether it's expanded or not
         decoration: BoxDecoration(
           color: Colors.grey[300],
           border: Border.all(
@@ -42,7 +43,8 @@ class _ExpandableContainerState extends State<ExpandableContainer> {
             ),
             AnimatedOpacity(
               duration: Duration(milliseconds: 500),
-              opacity: _isExpanded ? 1 : 0, // Change the opacity based on whether it's expanded or not
+              opacity: _isExpanded ? 1 : 0,
+              // Change the opacity based on whether it's expanded or not
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
