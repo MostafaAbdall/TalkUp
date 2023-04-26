@@ -2,6 +2,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+List<int> buttons =[0,1,2];
+int selectedButton =0;
+int buttonClicked=0;
+
+
 
 bool isClicked = false;
 bool isLight = false;
@@ -886,7 +891,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
                                             ],
                                           ),
                                           SizedBox(
-                                            height: 40,
+                                            height: 20,
                                           ),
                                           Row(
                                             crossAxisAlignment:
@@ -910,7 +915,11 @@ class _DoctorProfileState extends State<DoctorProfile> {
                                                   ],
                                                 ),
                                                 child: ElevatedButton(
-                                                  onPressed: () {},
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      selectedButton=0;
+                                                    });
+                                                  },
                                                   child: Text(
                                                     '12:00 AM',
                                                     style: TextStyle(
@@ -921,7 +930,8 @@ class _DoctorProfileState extends State<DoctorProfile> {
                                                   ),
                                                   style:
                                                       ElevatedButton.styleFrom(
-                                                    primary: Colors.white,
+                                                    primary:  selectedButton==0? Color(0xffECAB99):Colors.white
+                                                        ,
                                                     shape:
                                                         RoundedRectangleBorder(
                                                       borderRadius:
@@ -949,7 +959,11 @@ class _DoctorProfileState extends State<DoctorProfile> {
                                                   ],
                                                 ),
                                                 child: ElevatedButton(
-                                                  onPressed: () {},
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      selectedButton=1;
+                                                    });
+                                                  },
                                                   child: Text(
                                                     '1:00 PM',
                                                     style: TextStyle(
@@ -960,7 +974,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
                                                   ),
                                                   style:
                                                       ElevatedButton.styleFrom(
-                                                    primary: Colors.white,
+                                                    primary: selectedButton==1? Color(0xffECAB99):Colors.white,
                                                     shape:
                                                         RoundedRectangleBorder(
                                                       borderRadius:
@@ -988,7 +1002,11 @@ class _DoctorProfileState extends State<DoctorProfile> {
                                                   ],
                                                 ),
                                                 child: ElevatedButton(
-                                                  onPressed: () {},
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      selectedButton=2;
+                                                    });
+                                                  },
                                                   child: Text(
                                                     '2:00 PM',
                                                     style: TextStyle(
@@ -999,7 +1017,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
                                                   ),
                                                   style:
                                                       ElevatedButton.styleFrom(
-                                                    primary: Colors.white,
+                                                    primary: selectedButton==2? Color(0xffECAB99):Colors.white,
                                                     shape:
                                                         RoundedRectangleBorder(
                                                       borderRadius:
@@ -1009,6 +1027,124 @@ class _DoctorProfileState extends State<DoctorProfile> {
                                                   ),
                                                 ),
                                               ),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 30,
+                                          ),
+                                          Row(
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                            children: [
+                                              SizedBox(
+                                                width: 20,
+                                              ),
+                                              Text(
+                                                'Select session duration',
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Color(0xff7fa6b7)),
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 20,
+                                          ),
+                                          Row(
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                            children: [
+                                              SizedBox(
+                                                width: 20,
+                                              ),
+                                              Container(
+                                                width: 55,
+                                                height: 23,
+                                                decoration: BoxDecoration(
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      color: Colors.grey
+                                                          .withOpacity(0.6),
+                                                      spreadRadius: 1,
+                                                      blurRadius: 5,
+                                                      offset: Offset(0, 5),
+                                                    ),
+                                                  ],
+                                                ),
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    setState(() {
+                                                     buttonClicked=1;
+                                                    });
+                                                  },
+                                                  child: Text(
+                                                    '30 Mins',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                        FontWeight.bold,
+                                                        fontSize: 5.0,
+                                                        color: Colors.black),
+                                                  ),
+                                                  style:
+                                                  ElevatedButton.styleFrom(
+                                                    primary:  buttonClicked==1? Color(0xffECAB99):Colors.white
+                                                    ,
+                                                    shape:
+                                                    RoundedRectangleBorder(
+                                                      borderRadius:
+                                                      BorderRadius.circular(
+                                                          30),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 30,
+                                              ),
+                                              Container(
+                                                width: 55,
+                                                height: 23,
+                                                decoration: BoxDecoration(
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      color: Colors.grey
+                                                          .withOpacity(0.6),
+                                                      spreadRadius: 1,
+                                                      blurRadius: 5,
+                                                      offset: Offset(0, 5),
+                                                    ),
+                                                  ],
+                                                ),
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      buttonClicked=0;
+                                                    });
+                                                  },
+                                                  child: Text(
+                                                    '60 Mins',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                        FontWeight.bold,
+                                                        fontSize: 5.0,
+                                                        color: Colors.black),
+                                                  ),
+                                                  style:
+                                                  ElevatedButton.styleFrom(
+                                                    primary: buttonClicked==0? Color(0xffECAB99):Colors.white,
+                                                    shape:
+                                                    RoundedRectangleBorder(
+                                                      borderRadius:
+                                                      BorderRadius.circular(
+                                                          30),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 30,
+                                              ),
+
                                             ],
                                           ),
                                           SizedBox(
