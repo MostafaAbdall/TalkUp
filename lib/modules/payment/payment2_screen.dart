@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:test2/modules/payment/payment3_screen.dart';
 List<int> buttons =[0,1,2];
 int selectedButton =0;
 int buttonClicked=0;
@@ -196,12 +197,12 @@ class _DoctorProfileState extends State<Payment2> {
                                   child: ElevatedButton(
                                     onPressed: () {
 
-                                      // Navigator.push(
-                                      //   context,
-                                      //   MaterialPageRoute(
-                                      //       builder: (context) =>
-                                      //           Payment1()),
-                                      // );
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                Payment3()),
+                                      );
                                     },
                                     child: Text(
                                       'Done',
