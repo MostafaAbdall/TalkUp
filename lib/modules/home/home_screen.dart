@@ -28,6 +28,11 @@ class _HomeState extends State<Home> {
           image: AssetImage('assets/images/i1.png'),
         )),
   ];
+  bool emoClick=false;
+  bool emoClick2=false;
+  bool emoClick3=false;
+  bool emoClick4=false;
+  bool emoClick5=false;
 
   int currentIndex = 0;
   bool isExpanded = false;
@@ -147,41 +152,113 @@ class _HomeState extends State<Home> {
                       width: 70,
                       height: 70,
                       child: MaterialButton(
-                          onPressed: () {},
-                          child: Image(
-                            image: AssetImage('assets/images/e1.png'),
+                          onPressed: () {
+                            setState(() {
+                              emoClick=!emoClick;
+                              emoClick5=false;
+                              emoClick2=false;
+                              emoClick3=false;
+                              emoClick4=false;
+                            });
+                          },
+                          child: Container(decoration: BoxDecoration(shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.grey,
+                              width:emoClick? 3:0,
+                            ),
+                          ),
+                            child: Image(
+                              image: AssetImage('assets/images/e1.png'),
+                            ),
                           ))),
                   Container(
                       width: 70,
                       height: 70,
                       child: MaterialButton(
-                          onPressed: () {},
-                          child: Image(
-                            image: AssetImage('assets/images/e2.png'),
+                          onPressed: () {setState(() {
+                            emoClick2=!emoClick2;
+                            emoClick=false;
+                            emoClick5=false;
+                            emoClick3=false;
+                            emoClick4=false;
+                          });},
+                          child: Container(decoration: BoxDecoration(shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.grey,
+                              width:emoClick2? 3:0,
+                            ),
+                          ),
+                            child: Image(
+                              image: AssetImage('assets/images/e2.png'),
+                            ),
                           ))),
                   Container(
                       width: 70,
                       height: 70,
                       child: MaterialButton(
-                          onPressed: () {},
-                          child: Image(
-                            image: AssetImage('assets/images/e3.png'),
+                          onPressed: () {
+                            setState(() {
+                              emoClick3=!emoClick3;
+                              emoClick=false;
+                              emoClick2=false;
+                              emoClick5=false;
+                              emoClick4=false;
+                            });
+                          },
+                          child: Container(decoration: BoxDecoration(shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.grey,
+                              width:emoClick3? 3:0,
+                            ),
+                          ),
+                            child: Image(
+                              image: AssetImage('assets/images/e3.png'),
+                            ),
                           ))),
                   Container(
                       width: 70,
                       height: 70,
                       child: MaterialButton(
-                          onPressed: () {},
-                          child: Image(
-                            image: AssetImage('assets/images/e3.png'),
+                          onPressed: () {setState(() {
+                            emoClick4=!emoClick4;
+                            emoClick=false;
+                            emoClick2=false;
+                            emoClick3=false;
+                            emoClick5=false;
+                          });},
+                          child: Container(decoration: BoxDecoration(shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.grey,
+                              width:emoClick4? 3:0,
+                            ),
+                          ),
+                            child: Image(
+                              image: AssetImage('assets/images/e3.png'),
+                            ),
                           ))),
                   Container(
                       width: 70,
                       height: 70,
+
                       child: MaterialButton(
-                          onPressed: () {},
-                          child: Image(
-                            image: AssetImage('assets/images/e1.png'),
+                          onPressed: () {
+                            setState(() {
+                              emoClick5=!emoClick5;
+                              emoClick=false;
+                              emoClick2=false;
+                              emoClick3=false;
+                              emoClick4=false;
+                            });
+                          },
+                          child: Container( decoration: BoxDecoration(shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.grey,
+                              width:emoClick5? 3:0,
+                            ),
+                          ),
+                            child: Image(
+                              image: AssetImage('assets/images/e1.png'),
+                            ),
                           ))),
                 ],
               ),
