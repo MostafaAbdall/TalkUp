@@ -1,6 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:test2/main.dart';
+bool isClicked=false;
+bool isClicked2=false;
+bool isClicked3=false;
+bool isClicked4=false;
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double appBarHeight = 100.0;
@@ -321,11 +325,13 @@ class _CommunityState extends State<Community> {
                                       width: 60,
                                       height: 60,
                                       child: MaterialButton(
-                                          onPressed: () {},
+                                          onPressed: () {setState(() {
+                                            isClicked=!isClicked;
+                                          });},
                                           child: CircleAvatar(
                                             backgroundColor: Colors.white,
                                             child: Image(
-                                              image: AssetImage(
+                                              image: AssetImage(isClicked?'assets/images/love2.png':
                                                   'assets/images/love.png'),
                                               width: 100,
                                               height: 100,
@@ -440,12 +446,14 @@ class _CommunityState extends State<Community> {
                                       width: 60,
                                       height: 60,
                                       child: MaterialButton(
-                                          onPressed: () {},
+                                          onPressed: () {setState(() {
+                                            isClicked2=!isClicked2;
+                                          });},
                                           child: CircleAvatar(
                                             backgroundColor: Colors.white,
                                             child: Image(
-                                              image: AssetImage(
-                                                  'assets/images/love.png'),
+                                              image: AssetImage(isClicked2?'assets/images/love2.png':
+                                              'assets/images/love.png'),
                                               width: 100,
                                               height: 100,
                                             ),
@@ -559,12 +567,14 @@ class _CommunityState extends State<Community> {
                                       width: 60,
                                       height: 60,
                                       child: MaterialButton(
-                                          onPressed: () {},
+                                          onPressed: () {setState(() {
+                                            isClicked3=!isClicked3;
+                                          });},
                                           child: CircleAvatar(
                                             backgroundColor: Colors.white,
                                             child: Image(
-                                              image: AssetImage(
-                                                  'assets/images/love.png'),
+                                              image: AssetImage(isClicked3?'assets/images/love2.png':
+                                              'assets/images/love.png'),
                                               width: 100,
                                               height: 100,
                                             ),
@@ -678,12 +688,14 @@ class _CommunityState extends State<Community> {
                                       width: 60,
                                       height: 60,
                                       child: MaterialButton(
-                                          onPressed: () {},
+                                          onPressed: () {setState(() {
+                                            isClicked4=!isClicked4;
+                                          });},
                                           child: CircleAvatar(
                                             backgroundColor: Colors.white,
                                             child: Image(
-                                              image: AssetImage(
-                                                  'assets/images/love.png'),
+                                              image: AssetImage(isClicked4?'assets/images/love2.png':
+                                              'assets/images/love.png'),
                                               width: 100,
                                               height: 100,
                                             ),
