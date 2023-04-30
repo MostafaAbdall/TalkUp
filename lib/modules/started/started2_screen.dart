@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../home/home_screen_withoutLogin.dart';
 import '../sign_up/sign_up_screen.dart';
 
 class Started2 extends StatelessWidget {
@@ -50,7 +51,7 @@ class Started2 extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => SignUp()),
+                            MaterialPageRoute(builder: (context) => HomeWithOutLgin()),
                           );
                         },
                         child: Text(
