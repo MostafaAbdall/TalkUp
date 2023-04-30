@@ -6,13 +6,20 @@ bool isClicked2=false;
 bool isClicked3=false;
 bool isClicked4=false;
 bool emoClicked=false;
+bool isClicked6= false;
+bool isLight=false;
+
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double appBarHeight = 100.0;
   final VoidCallback onPressed;
+  final VoidCallback onClicked;
   Color mainColor = Color(0xff7fa6b7);
 
-  MyAppBar({required this.onPressed});
+  MyAppBar({
+    required this.onPressed,
+    required this.onClicked,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,18 +39,81 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               onPressed: onPressed,
             ),
             SizedBox(
-              width: 20,
+              width: 50,
             ),
             Expanded(
-              child: Image(
-                image: AssetImage('assets/images/ph3.png'),
-                width: 80,
-                height: 50,
-              ),
+              child: isClicked
+                  ? Text('')
+                  : Container(
+                    child: Image(
+                      image: AssetImage('assets/images/ph3.png'),
+                      width: 80,
+                      height: 50,
+                    ),
+                  ),
             ),
             MaterialButton(
-              onPressed: () {},
-              child: Image(
+              onPressed: onClicked,
+              child: isClicked
+                  ? Container(
+                width: isClicked ? 190 : 0,
+                height: isClicked ? 50 : 0,
+                decoration: BoxDecoration(
+                    boxShadow: [BoxShadow()],
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                    ),
+                    color: Colors.white),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 10,
+                    ),
+                    CircleAvatar(
+                      backgroundColor: Colors.white.withOpacity(0),
+                      child: Image(
+                        image: AssetImage('assets/images/morsi.png'),
+                        width: 50,
+                        height: 50,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Mahmoud Morsi',
+                          style: TextStyle(fontSize: 10),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'Egypt',
+                          style: TextStyle(fontSize: 10),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.settings_outlined,
+                          size: 20,
+                          color: Color(0xff7fa6b7),
+                        )),
+                  ],
+                ),
+              )
+                  : Image(
                 image: AssetImage('assets/images/ph2.png'),
                 width: 40,
                 height: 50,
@@ -68,7 +138,11 @@ class _CommunityState extends State<Community> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(onPressed: () => Navigator.pop(context)),
+      appBar: MyAppBar(onPressed: () => Navigator.pop(context),onClicked: () {
+        setState(() {
+          isClicked = !isClicked;
+        });
+      },),
       body: Stack(children: [
         SingleChildScrollView(
           child: Container(
@@ -343,12 +417,12 @@ class _CommunityState extends State<Community> {
                                             height: 60,
                                             child: MaterialButton(
                                                 onPressed: () {setState(() {
-                                                  isClicked=!isClicked;
+                                                  isClicked6=!isClicked6;
                                                 });},
                                                 child: CircleAvatar(
                                                   backgroundColor: Colors.white,
                                                   child: Image(
-                                                    image: AssetImage(isClicked?'assets/images/love2.png':
+                                                    image: AssetImage(isClicked6?'assets/images/love2.png':
                                                     'assets/images/love.png'),
                                                     width: 100,
                                                     height: 100,
@@ -781,6 +855,100 @@ class _CommunityState extends State<Community> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  Container(
+                    height: 25,
+                    child: Row(
+                      children: [
+                        //SizedBox(width: 5,),
+                        MaterialButton(
+                            height: 10,
+                            onPressed: () {},
+                            child: Text(
+                              'Profile settings',
+                              style: TextStyle(
+                                  fontSize: 11,
+                                  color: Color(0xff7fa6b7),
+                                  decoration: TextDecoration.underline),
+                            )),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    child: Row(
+                      children: [
+                        //SizedBox(width: 5,),
+                        MaterialButton(
+                            height: 10,
+                            onPressed: () {},
+                            child: Text(
+                              'Language',
+                              style: TextStyle(
+                                  fontSize: 11,
+                                  color: Color(0xff7fa6b7),
+                                  decoration: TextDecoration.underline),
+                            )),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    child: Row(
+                      children: [
+                        //SizedBox(width: 5,),
+                        MaterialButton(
+                            height: 10,
+                            onPressed: () {},
+                            child: Text(
+                              'Payment info',
+                              style: TextStyle(
+                                  fontSize: 11,
+                                  color: Color(0xff7fa6b7),
+                                  decoration: TextDecoration.underline),
+                            )),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Container(
+                    height: 25,
+                    child: Row(
+                      children: [
+                        //SizedBox(width: 10,),
+                        MaterialButton(
+                            height: 10,
+                            onPressed: () {
+                              setState(() {
+                                isLight = !isLight;
+                              });
+                            },
+                            child: isLight
+                                ? Text(
+                              'Dark Mode',
+                              style: TextStyle(
+                                fontSize: 11,
+                                color: Color(0xff7fa6b7),
+                              ),
+                            )
+                                : Text(
+                              'Light Mode',
+                              style: TextStyle(
+                                fontSize: 11,
+                                color: Color(0xff7fa6b7),
+                              ),
+                            )),
+
+                        isLight
+                            ? Icon(
+                          Icons.shield_moon_outlined,
+                          color: Color(0xff7fa6b7),
+                        )
+                            : Icon(Icons.sunny, color: Color(0xff7fa6b7)),
+                      ],
+                    ),
+                  ),
 
                 ],
               ),

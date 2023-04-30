@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:test2/modules/home/home_layout.dart';
+import 'package:test2/modules/home/home_screen.dart';
 
 class OtbDone extends StatelessWidget {
   @override
@@ -32,10 +34,10 @@ class OtbDone extends StatelessWidget {
             height: 45,
             child: ElevatedButton(
               onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => Otb()),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Home1()),
+                );
               },
               child: Center(
                   child: Text(
