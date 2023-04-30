@@ -169,14 +169,61 @@ class _RelaxState extends State<Relax> {
                         });
                       },
                         child: Center(
-                            child:isClicked3?Container(width: 288,height: 200,
-                              child: Image(
-                                image: AssetImage(
-                                    'assets/images/music.png'),
-                                width: 288,
-                                height: 78,
-                              ),
-                            ): Container(
+                            child:isClicked3?Center(child: Container(width: 300,height: 75,decoration: BoxDecoration(  borderRadius: BorderRadius.circular(20),
+    color: Color(0xffF7D7CC).withOpacity(0.7),),
+    child: Column(
+    children: [SizedBox(height: 5,),
+    Row(mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+
+    SizedBox(width: 60,height: 40,
+    child: MaterialButton(onPressed: (){},
+    child: Image(
+    image: AssetImage('assets/images/music back.png'),
+    width: 12.5,
+    height: 14,
+    ),
+    ),
+    ),
+    SizedBox(width: 60,height: 40,
+    child: MaterialButton(onPressed: (){},
+    child: Image(
+    image: AssetImage('assets/images/music double back.png'),
+    width: 21.5,
+    height: 14,
+    ),
+    ),
+    ),
+    IconButton(onPressed: (){}, icon: Icon(Icons.pause,color: Colors.white,size: 30,)),
+    SizedBox(width: 60,height: 40,
+    child: MaterialButton(onPressed: (){},
+    child: Image(
+    image: AssetImage('assets/images/music back 2.png'),
+    width: 12.5,
+    height: 14,
+    ),
+    ),
+    ),
+    SizedBox(width: 60,height: 40,
+    child: MaterialButton(onPressed: (){},
+    child: Image(
+    image: AssetImage('assets/images/music double forward.png'),
+    width: 21.5,
+    height: 14,
+    ),
+    ),
+    ),
+
+    ],
+    ),
+    //SizedBox(height: 5,),
+    Image(
+    image: AssetImage('assets/images/music track.png'),
+    width: 136,
+    height: 6,
+    )
+    ],
+    ),)): Container(
                               width: 80,
                               height: 80,
                               decoration: BoxDecoration(boxShadow: [
@@ -262,9 +309,9 @@ class _RelaxState extends State<Relax> {
                         autoPlay: false,
                         enableInfiniteScroll: true,
                         aspectRatio: 25 / 9,
-                        viewportFraction:isClicked3?0.8: 0.4)),
+                        viewportFraction:isClicked3?0.9: 0.4)),
                 SizedBox(
-                  height:isClicked3?100: 15,
+                  height: 15,
                 ),
                 Text(
                   '              For you',
@@ -273,20 +320,76 @@ class _RelaxState extends State<Relax> {
                 SizedBox(
                   height: 20,
                 ),
-                isClicked2?MaterialButton(onPressed: (){
-                  setState(() {
-                    isClicked2=!isClicked2;
-                  });
-                },
-                  child: Center(
-                      child:Container(width: 288,height: 200,
-                        child: Image(
-                          image: AssetImage(
-                              'assets/images/music.png'),
-                          width: 288,
-                          height: 78,
-                        ),
-                      )),
+                isClicked2? Column(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row( crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
+                      children: [Text('Sleep Mix',style:
+                      TextStyle(fontSize: 17, color: Color(0xff1B3662)),)],),
+                    SizedBox(height: 10,),
+                    Row(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
+                      children: [Text('14 min',style:
+                      TextStyle(fontSize: 17, color: Color(0xff1B3662)),)],),
+                    SizedBox(height: 10,),
+                    MaterialButton(onPressed: (){setState(() {
+                      isClicked2=false;
+                    });},
+                      child: Center(child: Container(width: 300,height: 75,decoration: BoxDecoration(  borderRadius: BorderRadius.circular(20),
+                        color: Color(0xffF7D7CC).withOpacity(0.7),),
+                        child: Column(
+                          children: [SizedBox(height: 5,),
+                            Row(mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(width: 7,),
+                                SizedBox(width: 60,height: 40,
+                                  child: MaterialButton(onPressed: (){},
+                                    child: Image(
+                                      image: AssetImage('assets/images/music back.png'),
+                                      width: 12.5,
+                                      height: 14,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(width: 60,height: 40,
+                                  child: MaterialButton(onPressed: (){},
+                                    child: Image(
+                                      image: AssetImage('assets/images/music double back.png'),
+                                      width: 21.5,
+                                      height: 14,
+                                    ),
+                                  ),
+                                ),
+                                IconButton(onPressed: (){}, icon: Icon(Icons.pause,color: Colors.white,size: 30,)),
+                                SizedBox(width: 60,height: 40,
+                                  child: MaterialButton(onPressed: (){},
+                                    child: Image(
+                                      image: AssetImage('assets/images/music back 2.png'),
+                                      width: 12.5,
+                                      height: 14,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(width: 60,height: 40,
+                                  child: MaterialButton(onPressed: (){},
+                                    child: Image(
+                                      image: AssetImage('assets/images/music double forward.png'),
+                                      width: 21.5,
+                                      height: 14,
+                                    ),
+                                  ),
+                                ),
+
+                              ],
+                            ),
+                            //SizedBox(height: 5,),
+                            Image(
+                              image: AssetImage('assets/images/music track.png'),
+                              width: 136,
+                              height: 6,
+                            )
+                          ],
+                        ),)),
+                    ),
+                  ],
                 ): Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -596,6 +699,75 @@ class _RelaxState extends State<Relax> {
                 SizedBox(
                   height: 30,
                 ),
+                Column(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row( crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text('Sleep Mix',style:
+                    TextStyle(fontSize: 17, color: Color(0xff1B3662)),)],),
+                  SizedBox(height: 10,),
+                  Row(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text('14 min',style:
+                    TextStyle(fontSize: 17, color: Color(0xff1B3662)),)],),
+                  SizedBox(height: 10,),
+                  Center(child: Container(width: 300,height: 75,decoration: BoxDecoration(  borderRadius: BorderRadius.circular(20),
+                    color: Color(0xffF7D7CC).withOpacity(0.7),),
+                    child: Column(
+                      children: [SizedBox(height: 5,),
+                        Row(mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(width: 7,),
+                            SizedBox(width: 60,height: 40,
+                              child: MaterialButton(onPressed: (){},
+                                child: Image(
+                                  image: AssetImage('assets/images/music back.png'),
+                                  width: 12.5,
+                                  height: 14,
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 60,height: 40,
+                              child: MaterialButton(onPressed: (){},
+                                child: Image(
+                                  image: AssetImage('assets/images/music double back.png'),
+                                  width: 21.5,
+                                  height: 14,
+                                ),
+                              ),
+                            ),
+                            IconButton(onPressed: (){}, icon: Icon(Icons.pause,color: Colors.white,size: 30,)),
+                            SizedBox(width: 60,height: 40,
+                              child: MaterialButton(onPressed: (){},
+                                child: Image(
+                                  image: AssetImage('assets/images/music back 2.png'),
+                                  width: 12.5,
+                                  height: 14,
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 60,height: 40,
+                              child: MaterialButton(onPressed: (){},
+                                child: Image(
+                                  image: AssetImage('assets/images/music double forward.png'),
+                                  width: 21.5,
+                                  height: 14,
+                                ),
+                              ),
+                            ),
+
+                          ],
+                        ),
+                        //SizedBox(height: 5,),
+                        Image(
+                          image: AssetImage('assets/images/music track.png'),
+                          width: 136,
+                          height: 6,
+                        )
+                      ],
+                    ),)),
+                ],
+                ),
+
+                SizedBox(height: 20,)
               ],
             ),
           ),
