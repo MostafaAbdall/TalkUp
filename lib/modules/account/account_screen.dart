@@ -1,7 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+
+import 'account_screen2.dart';
 bool isClicked=false;
 bool isLight=false;
+bool isExpanded=false;
+bool isEdited= false;
+bool moodClicked=false;
+int colorClicked=0;
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double appBarHeight = 100.0;
@@ -364,7 +370,228 @@ class _AccountState extends State<Account> {
             ),
             child: Column(
               children: [
-                Container(
+                isEdited?Container(
+            width: double.infinity,
+              height: 300,
+              child: Stack(
+                children: [
+                  Positioned(
+                    top: 60,
+                    left: 20,
+                    child: Center(
+                        child: Container(
+                          width: 304,
+                          height: 210,
+                          decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 1,
+                                  blurRadius: 5,
+                                  offset: Offset(0, 5),
+                                ),
+                              ],
+                              borderRadius: BorderRadius.circular(20),
+                              color: Color(0xff7fa6b7)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                height: 45,
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width: 27,
+                                  ),
+                                  Text(
+                                    'Name : Mahmoud Morsi',
+                                    style: TextStyle(
+                                        fontSize: 11, color: Colors.white),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width: 27,
+                                  ),
+                                  Text(
+                                    'Email',
+                                    style: TextStyle(
+                                        fontSize: 12, color: Colors.white),
+                                  ),
+                                  SizedBox(width: 10,),
+                                  Text(
+                                    'Mahmoudmorsi@Gmail.com',
+                                    style: TextStyle(
+                                        fontSize: 12, color: Color(0xffF58F76)),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(width: 27,),
+                                  Text(
+                                    'Bio :',
+                                    style: TextStyle(
+                                        fontSize: 12, color: Colors.white),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 10,),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width: 27,
+                                  ),
+                                  Text(
+                                    "Sharing my journey to empower others 🌱 Let's grow together 🤝",
+                                    style: TextStyle(
+                                        fontSize: 9, color: Colors.white),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+
+                              Row(crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(width: 27,),
+                                  Text(
+                                    'Age :',
+                                    style: TextStyle(
+                                        fontSize: 12, color: Colors.white),
+                                  ),
+                                  SizedBox(width: 5,),
+                                  Text(
+                                    '23',
+                                    style: TextStyle(
+                                        fontSize: 12, color: Colors.white),
+                                  ),
+
+                                ],
+                              ),
+                              SizedBox(height: 10,),
+                              Row(crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(width: 27,),
+                                  Text(
+                                    'Gender :',
+                                    style: TextStyle(
+                                        fontSize: 12, color: Colors.white),
+                                  ),
+                                  SizedBox(width: 5,),
+                                  Text(
+                                    'Male',
+                                    style: TextStyle(
+                                        fontSize: 12, color: Colors.white),
+                                  ),
+
+                                ],
+                              ),
+                              SizedBox(height: 10,),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width: 27,
+                                  ),
+                                  Icon(
+                                    Icons.calendar_month,
+                                    color: Colors.white54,
+                                    size: 15,
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    'Joined March 2032',
+                                    style: TextStyle(
+                                        fontSize: 9, color: Colors.white54),
+                                  ),
+                                  SizedBox(
+                                    width: 100,
+                                  ),
+                                  Center(
+                                    child: Container(
+                                      width: 65,
+                                      height: 17,
+                                      decoration: BoxDecoration(
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.6),
+                                            spreadRadius: 1,
+                                            blurRadius: 5,
+                                            offset: Offset(0, 5),
+                                          ),
+                                        ],
+                                      ),
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            isEdited=false;
+                                          });
+                                        },
+                                        child: Text(
+                                          'Save',
+                                          style: TextStyle(
+                                              decoration:
+                                              TextDecoration.underline,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 6.0),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          primary: Color(0xffF58F76),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                            BorderRadius.circular(30),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        )),
+                  ),
+                  Positioned(
+                      top: 30,
+                      left: 50,
+                      child: Container(
+                          width: 64,
+                          height: 64,
+                          child: CircleAvatar(
+                            backgroundColor: Colors.white.withOpacity(0),
+                            child: Image(
+                              image: AssetImage('assets/images/morsi.png'),
+                              width: 70,
+                              height: 70,
+                            ),
+                          ))),
+                ],
+              ),
+            ): Container(
                   width: double.infinity,
                   height: 200,
                   child: Stack(
@@ -483,7 +710,11 @@ class _AccountState extends State<Account> {
                                             ],
                                           ),
                                           child: ElevatedButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              setState(() {
+                                                isEdited=!isEdited;
+                                              });
+                                            },
                                             child: Text(
                                               'Edit profile',
                                               style: TextStyle(
@@ -525,48 +756,105 @@ class _AccountState extends State<Account> {
                     ],
                   ),
                 ),
+
                 SizedBox(
                   height: 10,
                 ),
-                Center(
-                    child: Container(
-                      width: 83,
-                      height: 67,
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 1,
-                              blurRadius: 5,
-                              offset: Offset(0, 5),
+                Row(crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    moodClicked? Center(
+                        child: Container(
+                          width: 83,
+                          height: 67,
+                          decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 1,
+                                  blurRadius: 5,
+                                  offset: Offset(0, 5),
+                                ),
+                              ],
+                              borderRadius: BorderRadius.circular(20),
+                              color: Color(0xff7fa6b7)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                'Weekly Mood',
+                                style: TextStyle(fontSize: 10, color: Colors.white),
+                              ),
+                              SizedBox(
+                                height: 2,
+                              ),
+                              Image(
+                                image: AssetImage('assets/images/e2.png'),
+                                width: 40,
+                                height: 40,
+                              ),
+                            ],
+                          ),
+                        )):Text(''),
+
+                    Center(
+                        child: MaterialButton(onPressed: (){
+                          setState(() {
+                            moodClicked=!moodClicked;
+                          });
+                        },
+                          child: Container(
+                            width: 83,
+                            height: 67,
+                            decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 1,
+                                    blurRadius: 5,
+                                    offset: Offset(0, 5),
+                                  ),
+                                ],
+                                borderRadius: BorderRadius.circular(20),
+                                color: Color(0xff7fa6b7)),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  'Weekly Mood',
+                                  style: TextStyle(fontSize: 10, color: Colors.white),
+                                ),
+                                SizedBox(
+                                  height: 2,
+                                ),
+                                Image(
+                                  image: AssetImage('assets/images/e2.png'),
+                                  width: 40,
+                                  height: 40,
+                                ),
+                              ],
                             ),
-                          ],
-                          borderRadius: BorderRadius.circular(20),
-                          color: Color(0xff7fa6b7)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 10,
                           ),
-                          Text(
-                            'Weekly Mood',
-                            style: TextStyle(fontSize: 10, color: Colors.white),
-                          ),
-                          SizedBox(
-                            height: 2,
-                          ),
-                          Image(
-                            image: AssetImage('assets/images/e2.png'),
-                            width: 40,
-                            height: 40,
-                          ),
-                        ],
-                      ),
-                    )),
+                        )),
+
+                    moodClicked? Center(
+                        child:  Image(
+                          image: AssetImage('assets/images/mood.png'),
+                          width: 82,
+                          height: 83,
+                        ),):Text(''),
+                  ],
+                ),
                 SizedBox(
-                  height: 30,
+                  height: 35,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -576,45 +864,41 @@ class _AccountState extends State<Account> {
                       width: 10,
                     ),
                     Container(
+                      decoration: BoxDecoration(borderRadius:colorClicked==0? BorderRadius.circular(20):BorderRadius.circular(0),
+                       color:colorClicked==0? Color(0xff7fa6b7).withOpacity(0.7):Colors.white ),
                         width: 150,
                         height: 34,
                         child: MaterialButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                colorClicked=0;
+                              });
+                            },
                             child: Text(
                               'Posts',
                               style: TextStyle(
-                                  fontSize: 15, color: Color(0xff7fa6b7)),
+                                  fontSize: 15, color:colorClicked==0?Colors.white: Color(0xff7fa6b7)),
                             ))),
                     SizedBox(
                       width: 10,
                     ),
                     Container(
-                      width: 150,
-                      height: 34,
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor:
-                          MaterialStateProperty.all<Color>(Color(0x997fa6b7)),
-                          shape:
-                          MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                              // you can also set other properties here such as side, etc.
-                            ),
-                          ),
-                          // set the padding, shape, etc. as needed
-                        ),
-                        onPressed: () {
-                          // add your button action here
-                        },
-                        child: Text(
-                          'Likes',
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
-                        ),
-                      ),
-                    ),
+                        width: 150,
+                        height: 34,
+                        decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(20),
+                            color:colorClicked==1? Color(0xff7fa6b7).withOpacity(0.7):Colors.white ),
+                        child: MaterialButton(
+                            onPressed: () {
+                              setState(() {
+                                colorClicked=1;
+                              });
+                            },
+                            child: Text(
+                              'Likes',
+                              style: TextStyle(
+                                  fontSize: 15, color:colorClicked==1?Colors.white: Color(0xff7fa6b7)),
+                            ))),
                   ],
                 ),
                 SizedBox(
@@ -1106,6 +1390,7 @@ class _AccountState extends State<Account> {
                           SizedBox(
                             height: 40,
                           ),
+
                           CarouselSlider(
                             items: [Text(''), Text(''), Text(''), Text('')],
                             options: CarouselOptions(
