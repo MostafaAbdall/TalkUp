@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:test2/modules/home/home_layout.dart';
 List<int> buttons =[0,1,2];
 int selectedButton =0;
 int buttonClicked=0;
@@ -216,12 +217,31 @@ class _DoctorProfileState extends State<Payment3> {
                             child: ElevatedButton(
                               onPressed: () {
 
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //       builder: (context) =>
-                                //           Payment3()),
-                                // );
+                               showDialog(context: context, builder: (BuildContext context){
+                                 return  Container( decoration: BoxDecoration(
+                                     borderRadius: BorderRadius.circular(20.0),),
+                                   child: AlertDialog(
+                                     title: Row(
+                                       children: [
+                                         Text('Process Done '),
+                                         Icon(Icons.check_circle_outline,color: Colors.green,)
+                                       ],
+                                     ),
+                                     content: Text(' Session Booking completed successfully  ') ,
+                                     actions: <Widget>[
+                                       MaterialButton(
+                                         onPressed: () {
+                                           Navigator.push(
+                                             context,
+                                             MaterialPageRoute(builder: (context) => Home1()),
+                                           );
+                                         },
+                                         child: Text('OK'),
+                                       ),
+                                     ],
+                                   ),
+                                 );
+                               });
                               },
                               child: Text(
                                 'pay',
@@ -580,6 +600,7 @@ class _DoctorProfileState extends State<Payment3> {
                                 viewportFraction: 0.96,
                                 aspectRatio: 5 / 9),
                           ),
+
 
                         ],),
                       ),
