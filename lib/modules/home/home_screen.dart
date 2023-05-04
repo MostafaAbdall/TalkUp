@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:test2/modules/community/community_screen.dart';
 import 'package:test2/modules/relax/relax_screen.dart';
 
+import '../chat/doctor_profile_screen.dart';
 import '../chat/doctors_screen.dart';
 bool isClicked=false;
 bool isLight=false;
@@ -910,7 +911,12 @@ class _HomeState extends State<Home> {
                                                             ),
                                                             child:
                                                             ElevatedButton(
-                                                              onPressed: () {},
+                                                              onPressed: () {
+                                                                Navigator.push(
+                                                                  context,
+                                                                  MaterialPageRoute(builder: (context) => DoctorProfile()),
+                                                                );
+                                                              },
                                                               child: Text(
                                                                 'Book a Session',
                                                                 style: TextStyle(
