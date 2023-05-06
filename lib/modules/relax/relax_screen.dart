@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 bool isClicked=false;
@@ -6,11 +7,16 @@ bool isClicked3=false;
 
 bool isLight=false;
 
+
+
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double appBarHeight = 100.0;
   final VoidCallback onPressed;
   final VoidCallback onClicked;
   Color mainColor = Color(0xff7fa6b7);
+
+
+
 
   MyAppBar({
     required this.onPressed,
@@ -127,10 +133,43 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
 class Relax extends StatefulWidget {
   @override
+
   State<Relax> createState() => _RelaxState();
 }
 
 class _RelaxState extends State<Relax> {
+
+  bool isPlaying=false;
+  AudioPlayer audioPlayer = AudioPlayer();
+  Duration duration=Duration.zero;
+  Duration position=Duration.zero;
+  @override
+  void initState() {
+    super.initState();
+    _loadAudio();
+    audioPlayer.onPlayerStateChanged.listen((state) {
+      setState(() {
+        isPlaying=state ==PlayerState.playing;
+      });
+    });
+
+    audioPlayer.onDurationChanged.listen((newDuration) {
+      setState(() {
+        duration=newDuration;
+      });
+    });
+    
+  }
+
+  Future<void> _loadAudio() async {
+    await audioPlayer.play(UrlSource(''));
+    audioPlayer.onPositionChanged.listen((newPosition) {
+      setState(() {
+        position=newPosition;
+      });
+    });
+  }
+
 
 
   @override
@@ -170,22 +209,22 @@ class _RelaxState extends State<Relax> {
                       },
                         child: Center(
                             child:isClicked3?Center(child: Container(width: 300,height: 75,decoration: BoxDecoration(  borderRadius: BorderRadius.circular(20),
-    color: Color(0xffF7D7CC).withOpacity(0.7),),
-    child: Column(
-    children: [SizedBox(height: 5,),
-    Row(mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
+                              color: Color(0xffF7D7CC).withOpacity(0.7),),
+                               child: Column(
+                                children: [SizedBox(height: 5,),
+                          Row(mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
 
-    SizedBox(width: 60,height: 40,
-    child: MaterialButton(onPressed: (){},
-    child: Image(
-    image: AssetImage('assets/images/music back.png'),
-    width: 12.5,
-    height: 14,
-    ),
-    ),
-    ),
-    SizedBox(width: 60,height: 40,
+                                SizedBox(width: 60,height: 40,
+                              child: MaterialButton(onPressed: (){},
+                                  child: Image(
+                                 image: AssetImage('assets/images/music back.png'),
+                                          width: 12.5,
+                                              height: 14,
+                                                       ),
+                                                     ),
+                                   ),
+                                 SizedBox(width: 60,height: 40,
     child: MaterialButton(onPressed: (){},
     child: Image(
     image: AssetImage('assets/images/music double back.png'),
@@ -194,8 +233,31 @@ class _RelaxState extends State<Relax> {
     ),
     ),
     ),
-    IconButton(onPressed: (){}, icon: Icon(Icons.pause,color: Colors.white,size: 30,)),
-    SizedBox(width: 60,height: 40,
+                              isPlaying?  IconButton(onPressed: () {
+
+
+                                setState(() {
+                                  isPlaying=!isPlaying;
+                                  audioPlayer.pause();
+
+
+
+
+                                });
+                              }, icon:Icon(Icons.pause,color: Colors.white,size: 30,)):
+                              IconButton(onPressed: () {
+
+
+                                setState(() {
+                                  isPlaying=!isPlaying;
+                                  audioPlayer.play(UrlSource('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3'));
+
+
+
+
+                                });
+                              }, icon:Icon(Icons.play_arrow,color: Colors.white,size: 30,)),
+                                                 SizedBox(width: 60,height: 40,
     child: MaterialButton(onPressed: (){},
     child: Image(
     image: AssetImage('assets/images/music back 2.png'),
@@ -204,7 +266,7 @@ class _RelaxState extends State<Relax> {
     ),
     ),
     ),
-    SizedBox(width: 60,height: 40,
+                                                    SizedBox(width: 60,height: 40,
     child: MaterialButton(onPressed: (){},
     child: Image(
     image: AssetImage('assets/images/music double forward.png'),
@@ -214,16 +276,20 @@ class _RelaxState extends State<Relax> {
     ),
     ),
 
-    ],
-    ),
-    //SizedBox(height: 5,),
-    Image(
-    image: AssetImage('assets/images/music track.png'),
-    width: 136,
-    height: 6,
-    )
-    ],
-    ),)): Container(
+                                                       ],
+                                                 ),
+                                                    //SizedBox(height: 5,),
+                                                      Container(height: 2,width: 200,
+                                                          child: Slider(value: position.inSeconds.toDouble(),
+                                                            min: 0,max: duration.inSeconds.toDouble(),
+                                                            onChanged: (value) async{
+                                                            final position=Duration(seconds: value.toInt());
+                                                            await audioPlayer.seek(position);
+                                                            await audioPlayer.resume();
+
+                                                            },activeColor:Color(0xff7fa6b7) ,inactiveColor: Color(0xff7fa6b7),)),
+                                         ],
+                                      ),)): Container(
                               width: 80,
                               height: 80,
                               decoration: BoxDecoration(boxShadow: [
@@ -699,75 +765,10 @@ class _RelaxState extends State<Relax> {
                 SizedBox(
                   height: 30,
                 ),
-                Column(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row( crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
-                    children: [Text('Sleep Mix',style:
-                    TextStyle(fontSize: 17, color: Color(0xff1B3662)),)],),
-                  SizedBox(height: 10,),
-                  Row(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
-                    children: [Text('14 min',style:
-                    TextStyle(fontSize: 17, color: Color(0xff1B3662)),)],),
-                  SizedBox(height: 10,),
-                  Center(child: Container(width: 300,height: 75,decoration: BoxDecoration(  borderRadius: BorderRadius.circular(20),
-                    color: Color(0xffF7D7CC).withOpacity(0.7),),
-                    child: Column(
-                      children: [SizedBox(height: 5,),
-                        Row(mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(width: 7,),
-                            SizedBox(width: 60,height: 40,
-                              child: MaterialButton(onPressed: (){},
-                                child: Image(
-                                  image: AssetImage('assets/images/music back.png'),
-                                  width: 12.5,
-                                  height: 14,
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 60,height: 40,
-                              child: MaterialButton(onPressed: (){},
-                                child: Image(
-                                  image: AssetImage('assets/images/music double back.png'),
-                                  width: 21.5,
-                                  height: 14,
-                                ),
-                              ),
-                            ),
-                            IconButton(onPressed: (){}, icon: Icon(Icons.pause,color: Colors.white,size: 30,)),
-                            SizedBox(width: 60,height: 40,
-                              child: MaterialButton(onPressed: (){},
-                                child: Image(
-                                  image: AssetImage('assets/images/music back 2.png'),
-                                  width: 12.5,
-                                  height: 14,
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 60,height: 40,
-                              child: MaterialButton(onPressed: (){},
-                                child: Image(
-                                  image: AssetImage('assets/images/music double forward.png'),
-                                  width: 21.5,
-                                  height: 14,
-                                ),
-                              ),
-                            ),
 
-                          ],
-                        ),
-                        //SizedBox(height: 5,),
-                        Image(
-                          image: AssetImage('assets/images/music track.png'),
-                          width: 136,
-                          height: 6,
-                        )
-                      ],
-                    ),)),
-                ],
-                ),
 
-                SizedBox(height: 20,)
+                SizedBox(height: 20,),
+
               ],
             ),
           ),
@@ -896,5 +897,8 @@ class _RelaxState extends State<Relax> {
             ))
       ],)
     );
+
+
   }
+
 }
