@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:test2/modules/community/community_screen.dart';
 import 'package:test2/modules/relax/relax_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:video_player/video_player.dart';
 
 import '../chat/doctor_profile_screen.dart';
 import '../chat/doctors_screen.dart';
@@ -46,6 +48,17 @@ class _HomeState extends State<Home> {
   bool isExpanded6 = false;
   bool isExpanded7 = false;
   bool isExpanded8 = false;
+ late VideoPlayerController _controller;
+  late VideoPlayerController _controller2;
+  @override
+  void initState() {
+    // TODO: implement initState
+    _controller=VideoPlayerController.asset('assets/images/video.mp4')..initialize().then((_){setState(() {
+
+    });});
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -319,12 +332,8 @@ class _HomeState extends State<Home> {
                         aspectRatio: 30 / 9,
                         viewportFraction: 0.4)),
 
-                // CarouselSlider(items: images2, options: CarouselOptions( autoPlay: false,enableInfiniteScroll: true,scrollDirection: Axis.vertical,disableCenter: false,
-                //     aspectRatio: 9/9,
-                //     enlargeCenterPage: false,viewportFraction: 0.3)),
-                // SizedBox(height: 20,),
-                // Text('       Active Doctors',style: TextStyle(fontSize: 20),),
-                // SizedBox(height: 20,),
+
+
 
                 CarouselSlider.builder(
                   itemCount: 1,
@@ -333,9 +342,7 @@ class _HomeState extends State<Home> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(
-                            height: 30,
-                          ),
+                          SizedBox(height: 30,),
                           Text(
                             '       Talk Up Articles',
                             style: TextStyle(fontSize: 17),
@@ -757,6 +764,137 @@ class _HomeState extends State<Home> {
                           SizedBox(
                             height: 30,
                           ),
+
+                          Text('     Talk Up Books',style: TextStyle(fontSize: 17,color: Color(0xff7fa6b7)),),
+                          SizedBox(height: 20,),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10,right: 10),
+                            child: CarouselSlider(
+                                items: [
+                                  Column(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Row(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Image(
+                                            image: AssetImage('assets/images/book.png'),
+                                            width: 100,
+                                            height: 160,
+                                          ),
+                                        ],
+                                      ),
+
+                                      Row(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          InkWell(onTap: ()=>launch('https://www.healthline.com/health/mental-health/mental-health-books#score'),
+                                              child: Text('The Body Keeps \nthe Score',style: TextStyle(decoration:TextDecoration.underline ),)),
+                                        ],
+                                      )
+
+                                    ],),
+                                  Column(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Row(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Image(
+                                            image: AssetImage('assets/images/book.png'),
+                                            width: 100,
+                                            height: 160,
+                                          ),
+                                        ],
+                                      ),
+
+                                      Row(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text('The Body Keeps \nthe Score',style: TextStyle(decoration:TextDecoration.underline ),),
+                                        ],
+                                      )
+
+                                    ],),
+                                  Column(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Row(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Image(
+                                            image: AssetImage('assets/images/book.png'),
+                                            width: 100,
+                                            height: 160,
+                                          ),
+                                        ],
+                                      ),
+
+                                      Row(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text('The Body Keeps \nthe Score',style: TextStyle(decoration:TextDecoration.underline ),),
+                                        ],
+                                      )
+
+                                    ],),
+                                ],
+                                options: CarouselOptions(
+                                    enlargeCenterPage: true,
+                                    enlargeFactor: 0.1,
+                                    reverse: false,
+                                    initialPage: 0,
+                                    autoPlay: false,
+                                    enableInfiniteScroll: true,
+                                    aspectRatio: 15 / 9,
+                                    viewportFraction: 0.4)),
+                          ),
+                          SizedBox(height: 40,),
+                          Text(
+                            '       Talk Up Videos',
+                            style: TextStyle(fontSize: 17,color: Color(0xff7fa6b7)),
+                          ),
+                          SizedBox(height: 30,),
+                          Column(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Center(
+                                child: Container(width: 300,height: 200,decoration: BoxDecoration(border: Border.all(width: 10,color: Color(0xff7fa6b7)),borderRadius: BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10))),
+                                  child:_controller.value.isInitialized? VideoPlayer(_controller):Container(),
+                                ),
+
+                              ),
+
+                              Center(
+                                child: Container( width: 300,height: 40,
+                                  decoration: BoxDecoration(borderRadius: BorderRadius.only(bottomLeft:Radius.circular(20),bottomRight: Radius.circular(20)),color: Color(0xff7fa6b7)),
+                                  child: MaterialButton(onPressed: (){
+                                    setState(() {
+                                      _controller.value.isPlaying? _controller.pause():_controller.play();
+                                    });
+                                  },
+                                    child: Icon(_controller.value.isPlaying?Icons.pause:Icons.play_arrow,size: 30,color: Colors.white,),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20,),
+                          Column(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Center(
+                                child: Container(width: 300,height: 200,decoration: BoxDecoration(border: Border.all(width: 10,color: Color(0xff7fa6b7)),borderRadius: BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10))),
+                                  child:_controller.value.isInitialized? VideoPlayer(_controller):Container(),
+                                ),
+
+                              ),
+
+                              Center(
+                                child: Container( width: 300,height: 40,
+                                  decoration: BoxDecoration(borderRadius: BorderRadius.only(bottomLeft:Radius.circular(20),bottomRight: Radius.circular(20)),color: Color(0xff7fa6b7)),
+                                  child: MaterialButton(onPressed: (){
+                                    setState(() {
+                                      _controller.value.isPlaying? _controller.pause():_controller.play();
+                                    });
+                                  },
+                                    child: Icon(_controller.value.isPlaying?Icons.pause:Icons.play_arrow,size: 30,color: Colors.white,),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 40,),
+
                           Text(
                             '       Active Doctors',
                             style: TextStyle(fontSize: 15),
@@ -1194,6 +1332,10 @@ class _HomeState extends State<Home> {
                       viewportFraction: 0.96,
                       aspectRatio: 9 / 9),
                 ),
+
+
+
+
               ],
             ),
           ),
