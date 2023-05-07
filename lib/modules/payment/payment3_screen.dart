@@ -218,26 +218,53 @@ class _DoctorProfileState extends State<Payment3> {
                               onPressed: () {
 
                                showDialog(context: context, builder: (BuildContext context){
-                                 return  Container( decoration: BoxDecoration(
-                                     borderRadius: BorderRadius.circular(20.0),),
+                                 return  Container( width: 235,height: 195, decoration: BoxDecoration(
+                                     borderRadius: BorderRadius.circular(40.0),),
                                    child: AlertDialog(
-                                     title: Row(
+                                     title: Row(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
                                        children: [
-                                         Text('Process Done '),
-                                         Icon(Icons.check_circle_outline,color: Colors.green,)
+                                         Center(
+                                           child: Image(
+                                             image: AssetImage('assets/images/payment a.png'),
+                                             width: 62,
+                                             height:84,
+                                           ),
+                                         ),
+
+
                                        ],
                                      ),
-                                     content: Text(' Session Booking completed successfully  ') ,
-                                     actions: <Widget>[
-                                       MaterialButton(
-                                         onPressed: () {
-                                           Navigator.push(
-                                             context,
-                                             MaterialPageRoute(builder: (context) => Home1()),
-                                           );
-                                         },
-                                         child: Text('OK'),
+                                     content: Container(width: 235,height: 30,
+                                       child: Row(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
+                                         children: [
+                                           Text(' Payment Done  ',style: TextStyle(color: Color(0xff468195)),),
+                                         ],
                                        ),
+                                     ) ,
+                                     actions: <Widget>[
+                                       Center(
+                                         child: Container(width: 85,height: 25,decoration: BoxDecoration( boxShadow: [
+                                           BoxShadow(
+                                             color: Colors.grey.withOpacity(0.5),
+                                             spreadRadius: 1,
+                                             blurRadius: 5,
+                                             offset: Offset(0, 5),
+                                           ),
+                                         ],
+                                           borderRadius: BorderRadius.circular(20), color: Color(0xff468195)
+                                         ),
+                                           child: MaterialButton(
+                                             onPressed: () {
+                                               Navigator.push(
+                                                 context,
+                                                 MaterialPageRoute(builder: (context) =>Payment3 ()),
+                                               );
+                                             },
+                                             child: Text('Done',style: TextStyle(color: Colors.white),),
+                                           ),
+                                         ),
+                                       ),
+                                       SizedBox(height: 10,),
                                      ],
                                    ),
                                  );
