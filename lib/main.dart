@@ -6,6 +6,7 @@ import 'modules/splash/splash_screen.dart';
 Color mainColor = Color(0xff7fa6b7);
 
 void main() {
+
   runApp(MyApp());
 }
 
