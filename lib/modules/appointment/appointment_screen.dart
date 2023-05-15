@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../videoCall/videoCall1_screen.dart';
+
 
 
 bool isClicked = false;
@@ -310,12 +312,12 @@ class _ChatState extends State<Appointment> {
                                       ),
                                       child: ElevatedButton(
                                         onPressed: () {
-                                          // Navigator.push(
-                                          //   context,
-                                          //   MaterialPageRoute(
-                                          //       builder: (context) =>
-                                          //           DoctorProfile()),
-                                          // );
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    VideoCall1()),
+                                          );
                                         },
                                         child: Text(
                                           'join now',

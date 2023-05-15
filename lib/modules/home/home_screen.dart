@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:test2/modules/appointment/appointment_screen.dart';
 import 'package:test2/modules/community/community_screen.dart';
 import 'package:test2/modules/relax/relax_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -54,6 +55,10 @@ class _HomeState extends State<Home> {
   void initState() {
     // TODO: implement initState
     _controller=VideoPlayerController.asset('assets/images/video.mp4')..initialize().then((_){setState(() {
+
+    });});
+
+    _controller2=VideoPlayerController.asset('assets/images/video.mp4')..initialize().then((_){setState(() {
 
     });});
 
@@ -307,9 +312,14 @@ class _HomeState extends State<Home> {
                             image: AssetImage('assets/images/Group4.png'),
                           )),
                       MaterialButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Appointment()),
+                            );
+                          },
                           child: Image(
-                            image: AssetImage('assets/images/Group3.png'),
+                            image: AssetImage('assets/images/Group6.png'),
                           )),
                       MaterialButton(
                           onPressed: () {
