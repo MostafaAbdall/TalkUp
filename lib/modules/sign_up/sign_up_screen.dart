@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart'as http;
 
 import '../login/login_screen.dart';
 import '../otb2/otb2_screen.dart';
+import 'dart:convert';
+import 'dart:io';
+
+// Disable certificate validation (for testing purposes)
+HttpClient httpClient = HttpClient()
+  ..badCertificateCallback =
+  ((X509Certificate cert, String host, int port) => true);
 
 class SignUp extends StatefulWidget {
   @override
@@ -9,6 +17,36 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  void  login(String email,String password) async{
+    try{
+      final Map<String, String> data = {
+        "name": email,
+        "password": password,
+        "gender": "male",
+        "email": email
+      };
+      final response= await http.post(Uri.parse('http://192.168.1.6:44372/api/Auth/register'),
+          headers: <String, String>{
+
+            'content-type': "application/json",
+          }
+          , body: jsonEncode(data), // Encode the data to JSON
+
+      );
+      if(response.statusCode==200){
+        print('account create sucessfully');
+      }else{
+        print('failed');
+        print(response.statusCode);
+
+      }
+
+    }
+    catch(e){
+      print(e.toString());
+    }
+
+  }
   final formField = GlobalKey<FormState>();
 
   final emailController = TextEditingController();
@@ -45,7 +83,7 @@ class _SignUpState extends State<SignUp> {
                         return 'Please Enter Email';
                       }
                       bool emailValid = RegExp(
-                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                           .hasMatch(value);
                       if (!emailValid) {
                         return 'Enter Valid Email';
@@ -144,8 +182,9 @@ class _SignUpState extends State<SignUp> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
+                      login(emailController.text.toString(), passConfController.text.toString());
                       if (formField.currentState!.validate()) {
-                        print('success');
+
                         emailController.clear();
                         passController.clear();
                         passConfController.clear();

@@ -1,4 +1,4 @@
-import 'package:audioplayers/audioplayers.dart';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 bool isClicked=false;
@@ -139,36 +139,36 @@ class Relax extends StatefulWidget {
 
 class _RelaxState extends State<Relax> {
 
-  bool isPlaying=false;
-  AudioPlayer audioPlayer = AudioPlayer();
-  Duration duration=Duration.zero;
-  Duration position=Duration.zero;
+  // bool isPlaying=false;
+  // AudioPlayer audioPlayer = AudioPlayer();
+  // Duration duration=Duration.zero;
+  // Duration position=Duration.zero;
   @override
-  void initState() {
-    super.initState();
-    _loadAudio();
-    audioPlayer.onPlayerStateChanged.listen((state) {
-      setState(() {
-        isPlaying=state ==PlayerState.playing;
-      });
-    });
+  // void initState() {
+  //   super.initState();
+  //   _loadAudio();
+  //   audioPlayer.onPlayerStateChanged.listen((state) {
+  //     setState(() {
+  //       isPlaying=state ==PlayerState.playing;
+  //     });
+  //   });
+  //
+  //   audioPlayer.onDurationChanged.listen((newDuration) {
+  //     setState(() {
+  //       duration=newDuration;
+  //     });
+  //   });
+  //
+  // }
 
-    audioPlayer.onDurationChanged.listen((newDuration) {
-      setState(() {
-        duration=newDuration;
-      });
-    });
-    
-  }
-
-  Future<void> _loadAudio() async {
-    await audioPlayer.play(UrlSource(''));
-    audioPlayer.onPositionChanged.listen((newPosition) {
-      setState(() {
-        position=newPosition;
-      });
-    });
-  }
+  // Future<void> _loadAudio() async {
+  //   await audioPlayer.play(UrlSource(''));
+  //   audioPlayer.onPositionChanged.listen((newPosition) {
+  //     setState(() {
+  //       position=newPosition;
+  //     });
+  //   });
+  // }
 
 
 
@@ -202,117 +202,117 @@ class _RelaxState extends State<Relax> {
                 ),
                 CarouselSlider(
                     items: [
-                      MaterialButton(onPressed: (){
-                        setState(() {
-                          isClicked3=!isClicked3;
-                        });
-                      },
-                        child: Center(
-                            child:isClicked3?Center(child: Container(width: 300,height: 75,decoration: BoxDecoration(  borderRadius: BorderRadius.circular(20),
-                              color: Color(0xffF7D7CC).withOpacity(0.7),),
-                               child: Column(
-                                children: [SizedBox(height: 5,),
-                          Row(mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-
-                                SizedBox(width: 60,height: 40,
-                              child: MaterialButton(onPressed: (){},
-                                  child: Image(
-                                 image: AssetImage('assets/images/music back.png'),
-                                          width: 12.5,
-                                              height: 14,
-                                                       ),
-                                                     ),
-                                   ),
-                                 SizedBox(width: 60,height: 40,
-    child: MaterialButton(onPressed: (){},
-    child: Image(
-    image: AssetImage('assets/images/music double back.png'),
-    width: 21.5,
-    height: 14,
-    ),
-    ),
-    ),
-                              isPlaying?  IconButton(onPressed: () {
-
-
-                                setState(() {
-                                  isPlaying=!isPlaying;
-                                  audioPlayer.pause();
-
-
-
-
-                                });
-                              }, icon:Icon(Icons.pause,color: Colors.white,size: 30,)):
-                              IconButton(onPressed: () {
-
-
-                                setState(() {
-                                  isPlaying=!isPlaying;
-                                  audioPlayer.play(UrlSource('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3'));
-
-
-
-
-                                });
-                              }, icon:Icon(Icons.play_arrow,color: Colors.white,size: 30,)),
-                                                 SizedBox(width: 60,height: 40,
-    child: MaterialButton(onPressed: (){},
-    child: Image(
-    image: AssetImage('assets/images/music back 2.png'),
-    width: 12.5,
-    height: 14,
-    ),
-    ),
-    ),
-                                                    SizedBox(width: 60,height: 40,
-    child: MaterialButton(onPressed: (){},
-    child: Image(
-    image: AssetImage('assets/images/music double forward.png'),
-    width: 21.5,
-    height: 14,
-    ),
-    ),
-    ),
-
-                                                       ],
-                                                 ),
-                                                    //SizedBox(height: 5,),
-                                                      Container(height: 2,width: 200,
-                                                          child: Slider(value: position.inSeconds.toDouble(),
-                                                            min: 0,max: duration.inSeconds.toDouble(),
-                                                            onChanged: (value) async{
-                                                            final position=Duration(seconds: value.toInt());
-                                                            await audioPlayer.seek(position);
-                                                            await audioPlayer.resume();
-
-                                                            },activeColor:Color(0xff7fa6b7) ,inactiveColor: Color(0xff7fa6b7),)),
-                                         ],
-                                      ),)): Container(
-                              width: 80,
-                              height: 80,
-                              decoration: BoxDecoration(boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 1,
-                                  blurRadius: 5,
-                                  offset: Offset(0, 5),
-                                ),
-                              ], borderRadius: BorderRadius.circular(20), color: Colors.white),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Image(
-                                    image: AssetImage('assets/images/ph10.png'),
-                                    width: 80,
-                                    height: 80,
-                                  ),
-                                ],
-                              ),
-                            )),
-                      ),
+    //                   MaterialButton(onPressed: (){
+    //                     setState(() {
+    //                       isClicked3=!isClicked3;
+    //                     });
+    //                   },
+    //                     child: Center(
+    //                         child:isClicked3?Center(child: Container(width: 300,height: 75,decoration: BoxDecoration(  borderRadius: BorderRadius.circular(20),
+    //                           color: Color(0xffF7D7CC).withOpacity(0.7),),
+    //                            child: Column(
+    //                             children: [SizedBox(height: 5,),
+    //                       Row(mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.center,
+    //                         children: [
+    //
+    //                             SizedBox(width: 60,height: 40,
+    //                           child: MaterialButton(onPressed: (){},
+    //                               child: Image(
+    //                              image: AssetImage('assets/images/music back.png'),
+    //                                       width: 12.5,
+    //                                           height: 14,
+    //                                                    ),
+    //                                                  ),
+    //                                ),
+    //                              SizedBox(width: 60,height: 40,
+    // child: MaterialButton(onPressed: (){},
+    // child: Image(
+    // image: AssetImage('assets/images/music double back.png'),
+    // width: 21.5,
+    // height: 14,
+    // ),
+    // ),
+    // ),
+    //                           isPlaying?  IconButton(onPressed: () {
+    //
+    //
+    //                             setState(() {
+    //                               isPlaying=!isPlaying;
+    //                               audioPlayer.pause();
+    //
+    //
+    //
+    //
+    //                             });
+    //                           }, icon:Icon(Icons.pause,color: Colors.white,size: 30,)):
+    //                           IconButton(onPressed: () {
+    //
+    //
+    //                             setState(() {
+    //                               isPlaying=!isPlaying;
+    //                               audioPlayer.play(UrlSource('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3'));
+    //
+    //
+    //
+    //
+    //                             });
+    //                           }, icon:Icon(Icons.play_arrow,color: Colors.white,size: 30,)),
+    //                                              SizedBox(width: 60,height: 40,
+    // child: MaterialButton(onPressed: (){},
+    // child: Image(
+    // image: AssetImage('assets/images/music back 2.png'),
+    // width: 12.5,
+    // height: 14,
+    // ),
+    // ),
+    // ),
+    //                                                 SizedBox(width: 60,height: 40,
+    // child: MaterialButton(onPressed: (){},
+    // child: Image(
+    // image: AssetImage('assets/images/music double forward.png'),
+    // width: 21.5,
+    // height: 14,
+    // ),
+    // ),
+    // ),
+    //
+    //                                                    ],
+    //                                              ),
+    //                                                 //SizedBox(height: 5,),
+    //                                                   Container(height: 2,width: 200,
+    //                                                       child: Slider(value: position.inSeconds.toDouble(),
+    //                                                         min: 0,max: duration.inSeconds.toDouble(),
+    //                                                         onChanged: (value) async{
+    //                                                         final position=Duration(seconds: value.toInt());
+    //                                                         await audioPlayer.seek(position);
+    //                                                         await audioPlayer.resume();
+    //
+    //                                                         },activeColor:Color(0xff7fa6b7) ,inactiveColor: Color(0xff7fa6b7),)),
+    //                                      ],
+    //                                   ),)): Container(
+    //                           width: 80,
+    //                           height: 80,
+    //                           decoration: BoxDecoration(boxShadow: [
+    //                             BoxShadow(
+    //                               color: Colors.grey.withOpacity(0.5),
+    //                               spreadRadius: 1,
+    //                               blurRadius: 5,
+    //                               offset: Offset(0, 5),
+    //                             ),
+    //                           ], borderRadius: BorderRadius.circular(20), color: Colors.white),
+    //                           child: Column(
+    //                             mainAxisAlignment: MainAxisAlignment.start,
+    //                             crossAxisAlignment: CrossAxisAlignment.center,
+    //                             children: [
+    //                               Image(
+    //                                 image: AssetImage('assets/images/ph10.png'),
+    //                                 width: 80,
+    //                                 height: 80,
+    //                               ),
+    //                             ],
+    //                           ),
+    //                         )),
+    //                   ),
                       MaterialButton(onPressed: (){},
                         child: Center(
                             child: Container(

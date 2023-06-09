@@ -142,7 +142,7 @@ class _ChatState extends State<VideoCall3> {
                 SizedBox(width: 18,),
                 IconButton(onPressed: (){
                   setState(() {
-                    mic=!mic;
+
                   });
                 }, icon: Icon(Icons.flip_camera_ios_rounded,color: Colors.white,size: 30,)),
                 SizedBox(width: 40,),

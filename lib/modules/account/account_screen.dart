@@ -786,7 +786,7 @@ class _AccountState extends State<Account> {
                                 height: 10,
                               ),
                               Text(
-                                'Weekly Mood',
+                                'Monthly Mood',
                                 style: TextStyle(fontSize: 10, color: Colors.white),
                               ),
                               SizedBox(
@@ -1066,26 +1066,27 @@ class _AccountState extends State<Account> {
                                             width: 35,
                                             height: 35,
                                             child: CircleAvatar(
-                                              backgroundColor: Color(0xff7fa6b7),
+                                                backgroundColor: Colors.white,
+                                                child: Image(
+                                                  image: AssetImage('assets/images/talker.png'),
+                                                  width: 25,
+                                                  height: 25,
+                                                )
                                             )),
                                         SizedBox(
                                           width: 10,
                                         ),
                                         Column(
                                           children: [
+
                                             Text(
-                                              'Sandra Ehab Retalked',
-                                              style: TextStyle(
-                                                  fontSize: 10, color: Colors.grey),
-                                            ),
-                                            Text(
-                                              'Mahmoud Morsi',
+                                              'Talker',
                                               style: TextStyle(fontSize: 15),
                                             ),
                                           ],
                                         ),
                                         SizedBox(
-                                          width: 70,
+                                          width: 135,
                                         ),
                                         Text(
                                           '14h',
@@ -1102,10 +1103,10 @@ class _AccountState extends State<Account> {
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
                                         SizedBox(
-                                          width: 65,
+                                          width: 45,
                                         ),
                                         Text(
-                                          'ياليتني طقس ليسأل الجميع عن احوالي ',
+                                          'لا إله إلا أنت سبحانك إنى كنت من الظالمين ',
                                           style:
                                           TextStyle(fontWeight: FontWeight.bold),
                                         ),
@@ -1125,12 +1126,13 @@ class _AccountState extends State<Account> {
                                             width: 60,
                                             height: 60,
                                             child: MaterialButton(
-                                                onPressed: () {},
+                                                onPressed: () {setState(() {
+
+                                                });},
                                                 child: CircleAvatar(
                                                   backgroundColor: Colors.white,
                                                   child: Image(
-                                                    image: AssetImage(
-                                                        'assets/images/love2.png'),
+                                                    image: AssetImage('assets/images/love2.png'),
                                                     width: 100,
                                                     height: 100,
                                                   ),
@@ -1185,54 +1187,54 @@ class _AccountState extends State<Account> {
                                             width: 35,
                                             height: 35,
                                             child: CircleAvatar(
-                                              backgroundColor: Color(0xff7fa6b7),
+                                                backgroundColor: Colors.white,
+                                                child: Image(
+                                                  image: AssetImage('assets/images/talker.png'),
+                                                  width: 25,
+                                                  height: 25,
+                                                )
                                             )),
                                         SizedBox(
                                           width: 10,
                                         ),
                                         Column(
                                           children: [
+
                                             Text(
-                                              'Sandra Ehab Retalked',
-                                              style: TextStyle(
-                                                  fontSize: 10, color: Colors.grey),
-                                            ),
-                                            Text(
-                                              'Mahmoud Morsi',
+                                              'Talker',
                                               style: TextStyle(fontSize: 15),
                                             ),
                                           ],
                                         ),
                                         SizedBox(
-                                          width: 70,
+                                          width: 140,
                                         ),
                                         Text(
-                                          '14h',
+                                          '4h',
                                           style: TextStyle(
                                               fontSize: 15, color: Colors.grey),
                                         ),
                                       ],
                                     ),
                                     SizedBox(
-                                      height: 15,
+                                      height: 0,
                                     ),
                                     Row(
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
                                         SizedBox(
-                                          width: 65,
+                                          width: 15,
                                         ),
                                         Text(
-                                          'ياليتني طقس ليسأل الجميع عن احوالي ',
+                                          'نخفى حزنا و وجعا و دموعا أحيانا...خلف عبارة',
                                           style:
                                           TextStyle(fontWeight: FontWeight.bold),
                                         ),
+
                                       ],
                                     ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
+                                    Center(child: Text('(أنا بخير)',style: TextStyle(fontWeight: FontWeight.bold),)),
                                     Row(
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       mainAxisAlignment: MainAxisAlignment.start,
@@ -1244,12 +1246,13 @@ class _AccountState extends State<Account> {
                                             width: 60,
                                             height: 60,
                                             child: MaterialButton(
-                                                onPressed: () {},
+                                                onPressed: () {setState(() {
+
+                                                });},
                                                 child: CircleAvatar(
                                                   backgroundColor: Colors.white,
                                                   child: Image(
-                                                    image: AssetImage(
-                                                        'assets/images/love2.png'),
+                                                    image: AssetImage('assets/images/love2.png'),
                                                     width: 100,
                                                     height: 100,
                                                   ),

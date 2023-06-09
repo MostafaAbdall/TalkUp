@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:http/http.dart'as http;
 import 'package:test2/modules/home/home_layout.dart';
 import 'package:test2/modules/sign_up/sign_up_screen.dart';
 
@@ -11,9 +14,42 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+
+  void  login(String email,String password) async{
+    try{
+      final Map<String, String> data = {
+        "name": email,
+        "password": password,
+        "gender": "male",
+        "email": "email",
+      };
+      final response= await http.post(Uri.parse('http://192.168.1.6:44372/api/Auth/register'),
+        headers: <String, String>{
+
+          'content-type': "application/json",
+        }
+        , body: jsonEncode(data), // Encode the data to JSON
+
+      );
+      if(response.statusCode==200){
+        print('account create sucessfully');
+      }else{
+        print('failed');
+        print(response.statusCode);
+
+      }
+
+    }
+    catch(e){
+      print(e.toString());
+    }
+
+  }
+
   final formField = GlobalKey<FormState>();
 
   final emailController = TextEditingController();
+
 
   final passController = TextEditingController();
 
@@ -135,8 +171,9 @@ class _LoginState extends State<Login> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
+                      login(emailController.text.toString(), passController.text.toString());
                       if (formField.currentState!.validate()) {
-                        print('success');
+
                         emailController.clear();
                         passController.clear();
                         Navigator.push(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test2/modules/account/account_screen.dart';
+import 'package:test2/modules/appointment/appointment_screen.dart';
 import 'package:test2/modules/community/community_screen.dart';
 import 'package:test2/modules/relax/relax_screen.dart';
 
@@ -82,7 +83,7 @@ class _Home1State extends State<Home1> {
 
   final List<Widget> screens = [
     Home(),
-    Chat(),
+    Appointment(),
     Community(),
     Relax(),
     Account(),
@@ -105,7 +106,7 @@ class _Home1State extends State<Home1> {
           items: [
             BottomNavigationBarItem(label: '', icon: Icon(Icons.home_filled)),
             BottomNavigationBarItem(
-                label: '', icon: Icon(Icons.medical_information_outlined)),
+                label: '', icon: Icon(Icons.calendar_month_rounded)),
             BottomNavigationBarItem(label: '', icon: Icon(Icons.add_circle)),
             BottomNavigationBarItem(
                 label: '',
